@@ -27,6 +27,13 @@ button:hover {
   background-color: #0a53be;
   border-color: #0a53be;
 }
+footer {
+  font-size: 12px;
+  font-family: "Roboto Serif", serif;
+  margin-top: 10px;
+  display: block;
+  text-align: center;
+}
 .detailedDescription {
   padding-top: 5px;
 }
