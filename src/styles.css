@@ -1,0 +1,129 @@
+h1 {
+  font-size: 42px;
+  font-family: "Roboto Serif", serif;
+  padding-right: 0;
+  margin-bottom: 0;
+  padding-left: 10px;
+}
+section .searchWidth {
+  font-family: "Roboto Serif", serif;
+  padding-right: 130px;
+}
+hr {
+  padding-bottom: 10px;
+}
+button {
+  font-size: 15px;
+  font-family: "Roboto Serif", serif;
+  color: #fff;
+  background-color: #0d6efd;
+  border: 1px solid #0d6efd;
+  border-radius: 4px;
+  position: relative;
+  right: 1px;
+  padding: 5px;
+}
+button:hover {
+  background-color: #0a53be;
+  border-color: #0a53be;
+}
+.detailedDescription {
+  padding-top: 5px;
+}
+.container {
+  border: 1px solid #000000;
+  border-radius: 5px;
+  margin-top: 50px;
+  padding: 15px;
+  padding-left: 25px;
+  width: 650px;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
+}
+.cities {
+  padding-left: 15px;
+  font-family: "Roboto Serif", serif;
+}
+.linkDescription {
+  text-decoration: none;
+  color: #000000;
+  transition: all 20ms ease-in-out;
+}
+.linkDescription:hover {
+  color: #134691;
+}
+.temperature {
+  font-size: 15px;
+  font-family: "Roboto Serif", serif;
+  position: relative;
+  top: -15px;
+}
+.temperature > a {
+  text-decoration: none;
+  color: #000000;
+}
+.fahrenheit {
+  font-size: 15px;
+  font-family: "Roboto Serif", serif;
+  position: relative;
+  text-decoration: none;
+  color: #000000;
+}
+.fahrenheit:hover {
+  text-decoration: none;
+  color: #000000;
+}
+.form {
+  margin-bottom: 5px;
+  font-family: "Roboto Serif", serif;
+}
+.percents {
+  font-size: 14px;
+  font-weight: 300;
+  padding-right: 0;
+  padding-left: 5px;
+  margin-bottom: 0;
+  font-family: "Roboto Serif", serif;
+}
+.mainEmoji {
+  font-size: 45px;
+  text-align: center;
+  padding-top: 0;
+  padding-right: 0;
+  width: 120px;
+}
+.detail {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 300;
+  margin-bottom: 0;
+  width: 180px;
+  margin-left: 0;
+  padding-left: 0;
+  font-family: "Roboto Serif", serif;
+}
+.row > .col {
+  padding-bottom: 0;
+  padding-left: 0;
+  padding-right: 0;
+}
+.moreInfo {
+  padding-left: 15px;
+  margin-top: 10px;
+  font-family: "Roboto Serif", serif;
+}
+.emojise {
+  font-size: 30px;
+}
+.minMax .temperature,
+.hour {
+  opacity: 0.8;
+}
+.minMax {
+  font-size: 12px;
+  padding-bottom: 10px;
+  font-family: "Roboto Serif", serif;
+}
