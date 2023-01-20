@@ -38,6 +38,9 @@ function getWeather(response) {
   let windSpeed = Math.round(response.data.wind.speed);
   let description = response.data.weather[0].description;
   let city = response.data.name;
+  let realFeel = Math.round(response.data.main.feels_like);
+  let minimumTemperature = Math.round(response.data.main.temp_min);
+  let maximumTemperature = Math.round(response.data.main.temp_max);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let celsiusTemperature = document.querySelector("#celsius");
@@ -50,6 +53,12 @@ function getWeather(response) {
   windSpeedElement.innerHTML = windSpeed;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = description;
+  let realFeelElement = document.querySelector("#feels");
+  realFeelElement.innerHTML = realFeel;
+  let minimumTemperatureElement = document.querySelector("#min-temp");
+  minimumTemperatureElement.innerHTML = minimumTemperature;
+  let maximumTemperatureElement = document.querySelector("#max-temp");
+  maximumTemperatureElement.innerHTML = maximumTemperature;
 }
 
 function searchDefaultCity(city) {
