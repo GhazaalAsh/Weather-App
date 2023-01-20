@@ -66,6 +66,8 @@ footer {
 .temperature {
   font-size: 15px;
   font-family: "Roboto Serif", serif;
+  position: relative;
+  top: -30px;
 }
 .temperature > a {
   text-decoration: none;
