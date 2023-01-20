@@ -1,7 +1,3 @@
-section .searchWidth {
-  font-family: "Roboto Serif", serif;
-  padding-right: 130px;
-}
 hr {
   padding-bottom: 10px;
 }
@@ -26,6 +22,10 @@ footer {
   margin-top: 10px;
   display: block;
   text-align: center;
+}
+section .searchWidth {
+  font-family: "Roboto Serif", serif;
+  padding-right: 250px;
 }
 .mainPrediction {
   font-size: 56px;
@@ -72,6 +72,9 @@ footer {
 .temperature > a {
   text-decoration: none;
   color: #000000;
+}
+.hourly-forecast {
+  position: relative;
 }
 .fahrenheit {
   font-size: 15px;
