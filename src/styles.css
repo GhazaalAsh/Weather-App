@@ -1,9 +1,8 @@
-hr {
-  padding-bottom: 10px;
+body {
+  font-family: "Montserrat", sans-serif;
 }
 button {
   font-size: 15px;
-  font-family: "Roboto Serif", serif;
   color: #fff;
   background-color: #0d6efd;
   border: 1px solid #0d6efd;
@@ -18,18 +17,15 @@ button:hover {
 }
 footer {
   font-size: 12px;
-  font-family: "Roboto Serif", serif;
   margin-top: 10px;
   display: block;
   text-align: center;
 }
 section .searchWidth {
-  font-family: "Roboto Serif", serif;
   padding-right: 250px;
 }
 .mainPrediction {
   font-size: 56px;
-  font-family: "Roboto Serif", serif;
   padding-right: 0;
   margin-bottom: 0;
   margin-left: 10px;
@@ -39,7 +35,7 @@ section .searchWidth {
   padding-top: 15px;
 }
 .container {
-  border: 1px solid #000000;
+  border: 1px solid #6a6b6e;
   border-radius: 5px;
   margin-top: 50px;
   padding: 15px;
@@ -53,7 +49,6 @@ section .searchWidth {
 }
 .cities {
   padding-left: 15px;
-  font-family: "Roboto Serif", serif;
 }
 .linkDescription {
   text-decoration: none;
@@ -65,7 +60,6 @@ section .searchWidth {
 }
 .temperature {
   font-size: 15px;
-  font-family: "Roboto Serif", serif;
   position: relative;
   top: -30px;
 }
@@ -78,7 +72,6 @@ section .searchWidth {
 }
 .fahrenheit {
   font-size: 15px;
-  font-family: "Roboto Serif", serif;
   position: relative;
   text-decoration: none;
   color: #000000;
@@ -89,17 +82,15 @@ section .searchWidth {
 }
 .form {
   margin-bottom: 5px;
-  font-family: "Roboto Serif", serif;
 }
 .percents {
   text-align: center;
   font-size: 14px;
-  font-weight: 300;
+  font-weight: 500;
   padding-right: 0;
   padding-left: 5px;
   padding-top: 20px;
   margin-bottom: 0;
-  font-family: "Roboto Serif", serif;
 }
 .mainEmoji {
   font-size: 45px;
@@ -111,12 +102,11 @@ section .searchWidth {
 .detail {
   text-align: center;
   font-size: 13px;
-  font-weight: 300;
+  font-weight: 500;
   margin-bottom: 0;
   width: 180px;
   margin-left: 0;
   padding-left: 0;
-  font-family: "Roboto Serif", serif;
 }
 
 .moreInfo {
@@ -125,7 +115,6 @@ section .searchWidth {
   text-align: center;
   padding-left: 15px;
   margin-top: 10px;
-  font-family: "Roboto Serif", serif;
 }
 
 .emojise {
@@ -138,8 +127,12 @@ section .searchWidth {
 .minMax {
   font-size: 12px;
   padding-bottom: 10px;
-  font-family: "Roboto Serif", serif;
 }
 .prediction {
   display: inline;
+}
+.windDegree {
+  border: 1px solid #6a6b6e;
+  border-radius: 4px;
+  padding: 0 2px;
 }

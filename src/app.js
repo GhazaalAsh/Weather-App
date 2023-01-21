@@ -41,6 +41,8 @@ function getWeather(response) {
   let realFeel = Math.round(response.data.main.feels_like);
   let minimumTemperature = Math.round(response.data.main.temp_min);
   let maximumTemperature = Math.round(response.data.main.temp_max);
+  let windDegree = response.data.wind.deg;
+  let pressure = response.data.main.pressure;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let celsiusTemperature = document.querySelector("#celsius");
@@ -59,8 +61,31 @@ function getWeather(response) {
   minimumTemperatureElement.innerHTML = minimumTemperature;
   let maximumTemperatureElement = document.querySelector("#max-temp");
   maximumTemperatureElement.innerHTML = maximumTemperature;
+  let windDegreeElement = document.querySelector("#wind-degree");
+  windDegreeElement.innerHTML = calculateWindDegree(windDegree);
+  let pressureElement = document.querySelector("#pressure");
+  pressureElement.innerHTML = pressure;
 }
 
+function calculateWindDegree(windDegree) {
+  if (windDegree <= 23 || windDegree >= 337) {
+    return "N";
+  } else if (windDegree >= 24 && windDegree <= 68) {
+    return "NE";
+  } else if (windDegree >= 69 && windDegree <= 113) {
+    return "E";
+  } else if (windDegree >= 114 && windDegree <= 158) {
+    return "SE";
+  } else if (windDegree >= 159 && windDegree <= 203) {
+    return "S";
+  } else if (windDegree >= 204 && windDegree <= 248) {
+    return "SW";
+  } else if (windDegree >= 249 && windDegree <= 293) {
+    return "W";
+  } else {
+    return "NW";
+  }
+}
 function searchDefaultCity(city) {
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
