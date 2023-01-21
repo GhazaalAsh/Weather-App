@@ -136,3 +136,11 @@ section .searchWidth {
 .description {
   text-transform: capitalize;
 }
+.addMore {
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
+}
+.addMore:hover {
+  border: 1px solid #6c757d;
+  background-color: #6c757d;
+}

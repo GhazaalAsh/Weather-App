@@ -28,7 +28,9 @@
     <div class="container">
       <header class="cities">
         <div class="row">
-          <div class="col-2"><a href="" class="linkDescription">Paris</a></div>
+          <div class="col-2">
+            <a href="" class="linkDescription" id="paris">Paris</a>
+          </div>
           <div class="col-2"><a href="" class="linkDescription">London</a></div>
           <div class="col-4">
             <a href="" class="linkDescription">New York</a>
@@ -48,7 +50,12 @@
           <button class="btn btn-outline-secondary" type="submit">
             Search
           </button>
-          <button class="btn btn-outline-secondary" type="button">
+          <button
+            class="btn btn-outline-secondary addMore"
+            type="button"
+            id="currentLocation"
+            title="Current Location"
+          >
             <i class="fa-solid fa-location-dot"></i>
           </button>
         </div>

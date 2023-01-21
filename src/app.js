@@ -92,6 +92,26 @@ function searchDefaultCity(city) {
   axios.get(apiUrl).then(getWeather);
 }
 
+function searchLinkedCity(event) {
+  event.preventDefault();
+  city = "Paris";
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getWeather);
+}
+
+function checkLocation() {
+  navigator.geolocation.getCurrentPosition(getPosition);
+  function getPosition(position) {
+    let longitudeElement = position.coords.longitude;
+    let latitudeElement = position.coords.latitude;
+    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let unit = "metric";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudeElement}&lon=${longitudeElement}&appid=${apiKey}&units=${unit}`;
+    axios.get(apiUrl).then(getWeather);
+  }
+}
+
 function searchCity(event) {
   event.preventDefault();
   let city = document.querySelector("#city");
@@ -134,10 +154,16 @@ currentDate(new Date());
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
 
+let locationElement = document.querySelector("#currentLocation");
+locationElement.addEventListener("click", checkLocation);
+
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
 fahrenheitTemperature.addEventListener("click", turnToFahrenheit);
 
 let celsiustemp = document.querySelector("#celsius-temp");
 celsiustemp.addEventListener("click", turnToCelsius);
+
+let parisLink = document.querySelector("#paris");
+parisLink.addEventListener("click", searchLinkedCity);
 
 searchDefaultCity("Tehran");
