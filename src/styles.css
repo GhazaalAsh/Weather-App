@@ -37,7 +37,7 @@ section .searchWidth {
 .container {
   border: 1px solid #6a6b6e;
   border-radius: 5px;
-  margin: 50px auto;
+  margin: 50px auto 10px auto;
   padding: 15px;
   padding-left: 25px;
   width: 650px;
@@ -79,9 +79,6 @@ section .searchWidth {
 .fahrenheit:hover {
   text-decoration: none;
   color: #000000;
-}
-.form {
-  margin-bottom: 5px;
 }
 .percents {
   text-align: center;
@@ -138,4 +135,7 @@ section .searchWidth {
 }
 .description {
   text-transform: capitalize;
+}
+.form {
+  margin-bottom: 5px;
 }
