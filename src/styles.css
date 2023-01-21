@@ -37,7 +37,7 @@ section .searchWidth {
 .container {
   border: 1px solid #6a6b6e;
   border-radius: 5px;
-  margin-top: 50px;
+  margin: 50px auto;
   padding: 15px;
   padding-left: 25px;
   width: 650px;
@@ -135,4 +135,7 @@ section .searchWidth {
   border: 1px solid #6a6b6e;
   border-radius: 4px;
   padding: 0 2px;
+}
+.description {
+  text-transform: capitalize;
 }
