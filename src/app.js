@@ -92,9 +92,25 @@ function searchDefaultCity(city) {
   axios.get(apiUrl).then(getWeather);
 }
 
-function searchLinkedCity(event) {
+function searchParis(event) {
   event.preventDefault();
   city = "Paris";
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getWeather);
+}
+
+function searchLondon(event) {
+  event.preventDefault();
+  city = "London";
+  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(getWeather);
+}
+
+function searchNewYork(event) {
+  event.preventDefault();
+  city = "New York";
   let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(getWeather);
@@ -164,6 +180,12 @@ let celsiustemp = document.querySelector("#celsius-temp");
 celsiustemp.addEventListener("click", turnToCelsius);
 
 let parisLink = document.querySelector("#paris");
-parisLink.addEventListener("click", searchLinkedCity);
+parisLink.addEventListener("click", searchParis);
+
+let londonLink = document.querySelector("#london");
+londonLink.addEventListener("click", searchLondon);
+
+let newYorkLink = document.querySelector("#new-York");
+newYorkLink.addEventListener("click", searchNewYork);
 
 searchDefaultCity("Tehran");
