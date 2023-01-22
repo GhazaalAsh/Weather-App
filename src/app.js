@@ -32,39 +32,38 @@ function currentDate(today) {
 }
 
 function getWeather(response) {
-  let temperature = Math.round(response.data.main.temp);
-  let country = response.data.sys.country;
-  let humidity = Math.round(response.data.main.humidity);
+  let city = response.data.city;
+  let country = response.data.country;
+  let description = response.data.condition.description;
+  let temperature = Math.round(response.data.temperature.current);
+  let realFeel = Math.round(response.data.temperature.feels_like);
+  let humidity = response.data.temperature.humidity;
+  let pressure = response.data.temperature.pressure;
   let windSpeed = Math.round(response.data.wind.speed);
-  let description = response.data.weather[0].description;
-  let city = response.data.name;
-  let realFeel = Math.round(response.data.main.feels_like);
-  let minimumTemperature = Math.round(response.data.main.temp_min);
-  let maximumTemperature = Math.round(response.data.main.temp_max);
-  let windDegree = response.data.wind.deg;
-  let pressure = response.data.main.pressure;
+  let windDegree = Math.round(response.data.wind.degree);
+  let icon = response.data.condition.icon;
+  let iconUrl = response.data.condition.icon_url;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
-  let celsiusTemperature = document.querySelector("#celsius");
-  celsiusTemperature.innerHTML = temperature;
   let countryElement = document.querySelector("#country");
   countryElement.innerHTML = country;
-  let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = humidity;
-  let windSpeedElement = document.querySelector("#wind");
-  windSpeedElement.innerHTML = windSpeed;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = description;
+  let temperatureElement = document.querySelector("#celsius");
+  temperatureElement.innerHTML = temperature;
   let realFeelElement = document.querySelector("#feels");
   realFeelElement.innerHTML = realFeel;
-  let minimumTemperatureElement = document.querySelector("#min-temp");
-  minimumTemperatureElement.innerHTML = minimumTemperature;
-  let maximumTemperatureElement = document.querySelector("#max-temp");
-  maximumTemperatureElement.innerHTML = maximumTemperature;
-  let windDegreeElement = document.querySelector("#wind-degree");
-  windDegreeElement.innerHTML = calculateWindDegree(windDegree);
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = humidity;
   let pressureElement = document.querySelector("#pressure");
   pressureElement.innerHTML = pressure;
+  let windSpeedElement = document.querySelector("#wind");
+  windSpeedElement.innerHTML = windSpeed;
+  let windDegreeElement = document.querySelector("#wind-degree");
+  windDegreeElement.innerHTML = calculateWindDegree(windDegree);
+  let iconElement = document.querySelector("#weather-icon");
+  iconElement.setAttribute("src", iconUrl);
+  iconElement.setAttribute("alt", icon);
 }
 
 function calculateWindDegree(windDegree) {
@@ -87,32 +86,36 @@ function calculateWindDegree(windDegree) {
   }
 }
 function searchDefaultCity(city) {
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getWeather);
 }
 
 function searchParis(event) {
   event.preventDefault();
   city = "Paris";
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getWeather);
 }
 
 function searchLondon(event) {
   event.preventDefault();
   city = "London";
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getWeather);
 }
 
 function searchNewYork(event) {
   event.preventDefault();
   city = "New York";
-  let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(getWeather);
 }
 
@@ -121,21 +124,20 @@ function checkLocation() {
   function getPosition(position) {
     let longitudeElement = position.coords.longitude;
     let latitudeElement = position.coords.latitude;
-    let apiKey = "5f472b7acba333cd8a035ea85a0d4d4c";
+    let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
     let unit = "metric";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitudeElement}&lon=${longitudeElement}&appid=${apiKey}&units=${unit}`;
-    axios.get(apiUrl).then(getWeather);
+    let apiUrl = `api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}
+`;
+    https: axios.get(apiUrl).then(getWeather);
   }
 }
 
 function searchCity(event) {
   event.preventDefault();
-  let city = document.querySelector("#city");
   let input = document.querySelector("#search-input");
-  let apikey = "5f472b7acba333cd8a035ea85a0d4d4c";
+  let apikey = "32f40ea24c4bbf27t7cf439de1do4214";
   let unit = "metric";
-  let url = `https://api.openweathermap.org/data/2.5/weather?q=${input.value}&appid=${apikey}&units=${unit}`;
-
+  let url = `https://api.shecodes.io/weather/v1/current?query=${input.value}&key=${apikey}&units=${unit}`;
   axios.get(url).then(getWeather);
 }
 

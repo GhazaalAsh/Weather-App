@@ -21,8 +21,9 @@ footer {
   display: block;
   text-align: center;
 }
-section .searchWidth {
-  padding-right: 250px;
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
 }
 li {
   list-style: none;
@@ -30,11 +31,12 @@ li {
   top: -10px;
 }
 .mainPrediction {
-  font-size: 56px;
+  font-size: 48px;
   padding-right: 0;
+  padding-top: 15px;
   margin-bottom: 0;
-  margin-left: 10px;
-  padding-left: 10px;
+  margin-left: 0px;
+  padding-left: 0px;
 }
 .detailedDescription {
   padding-top: 15px;
@@ -54,6 +56,7 @@ li {
 }
 .cities {
   padding-left: 15px;
+  margin-bottom: 5px;
 }
 .linkDescription {
   text-decoration: none;
@@ -90,8 +93,8 @@ li {
   font-size: 14px;
   font-weight: 500;
   padding-right: 0;
-  padding-left: 5px;
-  padding-top: 20px;
+  padding-left: 0;
+  padding-top: 30px;
   margin-bottom: 0;
 }
 .mainEmoji {
@@ -148,4 +151,19 @@ li {
 .addMore:hover {
   border: 1px solid #6c757d;
   background-color: #6c757d;
+}
+.middleDescription {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.minimumMaximum {
+  position: relative;
+  top: 10px;
+}
+.main-temp {
+  height: fit-content;
+}
+.location-time {
+  padding-top: 20px;
 }

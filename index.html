@@ -63,10 +63,12 @@
         </div>
       </form>
 
-      <div class="row">
+      <div class="row main-temp">
         <div class="col">
           <div class="mainPrediction">
-            <span class="mainEmoji">⛈</span>
+            <span class="mainEmoji">
+              <img src="" alt="" id="weather-icon" />
+            </span>
             <span id="celsius"></span
             ><span class="temperature" id="units">
               <a href="" id="celsius-temp">°C</a>|<a href="" id="fahrenheit"
@@ -75,31 +77,31 @@
             >
           </div>
         </div>
-        <div class="col">
-          <p class="percents">
-            Humidity: <span id="humidity"></span>%
-            <br />
-            Wind: <span id="wind"></span> Km/h
-            <span class="windDegree" id="wind-degree"></span>
-          </p>
+        <div class="col percents">
+          <ul>
+            <li>Humidity: <span id="humidity"></span>%</li>
+            <li>
+              Wind: <span id="wind"></span> Km/h<span
+                class="windDegree"
+                id="wind-degree"
+              ></span>
+            </li>
+            <li><span id="description" class="description"></span></li>
+          </ul>
         </div>
 
-        <div class="col">
+        <div class="col location-time">
           <section class="detailedDescription">
-            <p class="detail">
-              <span id="city"></span>
-              <span id="country"></span>
-              <br />
-              <span id="date"></span>
-              <br />
-              <span id="description" class="description"></span>
-            </p>
+            <ul class="detail">
+              <li><span id="city"></span> <span id="country"></span></li>
+              <li><span id="date"></span></li>
+            </ul>
           </section>
         </div>
       </div>
 
-      <div class="row">
-        <div class="col detail">
+      <div class="row middleDescription">
+        <div class="col detail minimumMaximum">
           <ul>
             <li>L:<span id="min-temp"></span>°C</li>
             <li>H:<span id="max-temp"></span>°C</li>
@@ -107,7 +109,7 @@
         </div>
         <div class="col">
           <div class="detail">
-            <div class="feels">Real Feel <span id="feels"></span>°C</div>
+            <div class="feels">Feels Like <span id="feels"></span>°C</div>
           </div>
         </div>
         <div class="col detail">Pressure <span id="pressure"> </span> mb</div>
