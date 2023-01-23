@@ -48,8 +48,8 @@ function getWeather(response) {
   let city = response.data.city;
   let country = response.data.country;
   let description = response.data.condition.description;
-  let temperatureControl = response.data.temperature.current;
-  let temperature = Math.round(response.data.temperature.current);
+  temperatureControl = response.data.temperature.current;
+  let temperature = Math.round(temperatureControl);
   let realFeel = Math.round(response.data.temperature.feels_like);
   let humidity = response.data.temperature.humidity;
   let pressure = response.data.temperature.pressure;
