@@ -80,7 +80,6 @@ function getWeather(response) {
   iconElement.setAttribute("src", iconUrl);
   iconElement.setAttribute("alt", icon);
   currentDate(timeControl);
-  console.log(temperatureControl);
 }
 
 function calculateWindDegree(windDegree) {
