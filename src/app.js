@@ -3,7 +3,11 @@ function setbackground(hour) {
   parisLinkColorElement = document.querySelector("#paris");
   londonLinkColorElement = document.querySelector("#london");
   newYorkLinkColorElement = document.querySelector("#new-York");
-  //unitsLinkColorElement = document.querySelector("#units");
+  celsiusLinkColorElement = document.querySelector("#celsius-temp");
+  fahrenheitLinkColorElement = document.querySelector("#fahrenheit");
+  unitsLinkColorElement = document.querySelector("#colorChange");
+  temperatureButtonElement = document.querySelector("#btnTemp");
+  windButtonElement = document.querySelector("#btnWind");
   if (hour < 12 && hour >= 6) {
     backgroundElment.classList.add("morning");
   } else if (hour < 18 && hour >= 12) {
@@ -18,6 +22,14 @@ function setbackground(hour) {
     londonLinkColorElement.classList.add("citiesNightMode");
     newYorkLinkColorElement.classList.remove("linkDescription");
     newYorkLinkColorElement.classList.add("citiesNightMode");
+    celsiusLinkColorElement.classList.remove("templink");
+    celsiusLinkColorElement.classList.add("templinkNight");
+    fahrenheitLinkColorElement.classList.remove("templink");
+    fahrenheitLinkColorElement.classList.add("templinkNight");
+    unitsLinkColorElement.classList.remove("colorChange");
+    unitsLinkColorElement.classList.add("colorChangeNight");
+    temperatureButtonElement.classList.add("colorChangeNight");
+    windButtonElement.classList.add("colorChangeNight");
   }
 }
 function currentDate(timestamp) {
