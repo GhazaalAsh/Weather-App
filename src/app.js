@@ -48,7 +48,7 @@ function getWeather(response) {
   let city = response.data.city;
   let country = response.data.country;
   let description = response.data.condition.description;
-  let celsiusTemperatureControl = response.data.temperature.current;
+  let temperatureControl = response.data.temperature.current;
   let temperature = Math.round(response.data.temperature.current);
   let realFeel = Math.round(response.data.temperature.feels_like);
   let humidity = response.data.temperature.humidity;
@@ -80,6 +80,7 @@ function getWeather(response) {
   iconElement.setAttribute("src", iconUrl);
   iconElement.setAttribute("alt", icon);
   currentDate(timeControl);
+  console.log(temperatureControl);
 }
 
 function calculateWindDegree(windDegree) {
@@ -160,34 +161,34 @@ function searchCity(event) {
 function turnToFahrenheit(event) {
   event.preventDefault();
   let TemperatureNumber = document.querySelector("#celsius");
-  let fahrenheit = Math.round(celsiusTemperatureControl * 1.8 + 32);
-  TemperatureNumber.innerHTML = fahrenheit;
   celsiustemp.classList.remove("deactive");
   fahrenheitTemperature.classList.add("deactive");
+  let fahrenheit = Math.round((temperatureControl * 9) / 5 + 32);
+  TemperatureNumber.innerHTML = fahrenheit;
 }
 
 function turnToCelsius(event) {
   event.preventDefault();
-  let TemperatureNumber = document.querySelector("#celsius");
-  let celsiusElement = Math.round(celsiusTemperatureControl);
-  TemperatureNumber.innerHTML = celsiusElement;
   celsiustemp.classList.add("deactive");
   fahrenheitTemperature.classList.remove("deactive");
+  let TemperatureNumber = document.querySelector("#celsius");
+  let celsiusElement = Math.round(temperatureControl);
+  TemperatureNumber.innerHTML = celsiusElement;
 }
-
-let form = document.querySelector("form");
-form.addEventListener("submit", searchCity);
-
-let celsiusTemperatureControl = null;
-
-let locationElement = document.querySelector("#currentLocation");
-locationElement.addEventListener("click", checkLocation);
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
 fahrenheitTemperature.addEventListener("click", turnToFahrenheit);
 
 let celsiustemp = document.querySelector("#celsius-temp");
 celsiustemp.addEventListener("click", turnToCelsius);
+
+let temperatureControl = null;
+
+let form = document.querySelector("form");
+form.addEventListener("submit", searchCity);
+
+let locationElement = document.querySelector("#currentLocation");
+locationElement.addEventListener("click", checkLocation);
 
 let parisLink = document.querySelector("#paris");
 parisLink.addEventListener("click", searchParis);

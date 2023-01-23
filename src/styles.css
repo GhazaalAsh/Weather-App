@@ -57,14 +57,25 @@ li {
   );
 }
 .afternoon {
-  background-color: green;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
 }
 .evening {
-  background-color: red;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
 }
 .night {
-  background-color: black;
-  color: #fff;
+  background: radial-gradient(
+    592px at 48.2% 50%,
+    rgba(255, 255, 249, 0.6) 0%,
+    rgb(160, 199, 254) 74.6%
+  );
 }
 .cities {
   padding-left: 15px;
