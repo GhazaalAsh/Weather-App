@@ -1,3 +1,15 @@
+function setbackground(hour) {
+  backgroundElment = document.querySelector("#background");
+  if (hour < 12 && hour >= 6) {
+    backgroundElment.classList.add("morning");
+  } else if (hour < 18 && hour >= 12) {
+    backgroundElment.classList.add("afternoon");
+  } else if (hour < 24 && hour >= 18) {
+    backgroundElment.classList.add("evening");
+  } else {
+    backgroundElment.classList.add("night");
+  }
+}
 function currentDate(timestamp) {
   let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -18,7 +30,6 @@ function currentDate(timestamp) {
   let day = days[date.getDay()];
   let month = months[date.getMonth()];
   let todayDate = date.getDate();
-  let year = date.getUTCFullYear();
   let hour = date.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
@@ -30,6 +41,7 @@ function currentDate(timestamp) {
   let fullDate = `${day}, ${month} ${todayDate}, ${hour}:${minute}`;
   let current = document.querySelector("#date-id");
   current.innerHTML = fullDate;
+  setbackground(hour);
 }
 
 function getWeather(response) {
@@ -162,8 +174,6 @@ function turnToCelsius(event) {
   celsiustemp.classList.add("deactive");
   fahrenheitTemperature.classList.remove("deactive");
 }
-
-//currentDate(new Date());
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
