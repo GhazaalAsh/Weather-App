@@ -1,5 +1,9 @@
 function setbackground(hour) {
   backgroundElment = document.querySelector("#background");
+  parisLinkColorElement = document.querySelector("#paris");
+  londonLinkColorElement = document.querySelector("#london");
+  newYorkLinkColorElement = document.querySelector("#new-York");
+  //unitsLinkColorElement = document.querySelector("#units");
   if (hour < 12 && hour >= 6) {
     backgroundElment.classList.add("morning");
   } else if (hour < 18 && hour >= 12) {
@@ -8,6 +12,12 @@ function setbackground(hour) {
     backgroundElment.classList.add("evening");
   } else {
     backgroundElment.classList.add("night");
+    parisLinkColorElement.classList.remove("linkDescription");
+    parisLinkColorElement.classList.add("citiesNightMode");
+    londonLinkColorElement.classList.remove("linkDescription");
+    londonLinkColorElement.classList.add("citiesNightMode");
+    newYorkLinkColorElement.classList.remove("linkDescription");
+    newYorkLinkColorElement.classList.add("citiesNightMode");
   }
 }
 function currentDate(timestamp) {

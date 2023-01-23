@@ -50,36 +50,38 @@ li {
   width: 650px;
 }
 .morning {
-  background: radial-gradient(
-    592px at 48.2% 50%,
-    rgba(255, 255, 249, 0.6) 0%,
-    rgb(160, 199, 254) 74.6%
+  background: linear-gradient(
+    179.4deg,
+    rgb(146, 221, 219) 31.2%,
+    rgb(236, 167, 219) 90.9%
   );
 }
 .afternoon {
   background: radial-gradient(
-    592px at 48.2% 50%,
-    rgba(255, 255, 249, 0.6) 0%,
-    rgb(160, 199, 254) 74.6%
+    circle at 10% 20%,
+    rgb(255, 189, 189) 0%,
+    rgb(255, 216, 168) 62%,
+    rgb(255, 248, 168) 100.7%
   );
 }
 .evening {
-  background: radial-gradient(
-    592px at 48.2% 50%,
-    rgba(255, 255, 249, 0.6) 0%,
-    rgb(160, 199, 254) 74.6%
-  );
+  background: linear-gradient(to top, #9795f0 0%, #fbc8d4 100%);
 }
 .night {
-  background: radial-gradient(
-    592px at 48.2% 50%,
-    rgba(255, 255, 249, 0.6) 0%,
-    rgb(160, 199, 254) 74.6%
-  );
+  background: linear-gradient(to right, rgb(173, 83, 137), rgb(60, 16, 83));
+  color: #e0d0d4;
 }
 .cities {
   padding-left: 15px;
   margin-bottom: 5px;
+}
+.citiesNightMode {
+  text-decoration: none;
+  color: #e0d0d4;
+  transition: all 20ms ease-in-out;
+}
+.citiesNightMode:hover {
+  color: #9795f0;
 }
 .linkDescription {
   text-decoration: none;
@@ -96,7 +98,7 @@ li {
 }
 .temperature > a {
   text-decoration: none;
-  color: #000000;
+  color: red;
 }
 .hourly-forecast {
   position: relative;
