@@ -64,20 +64,22 @@
       </form>
 
       <div class="row main-temp">
-        <div class="col">
+        <div class="col-5">
           <div class="mainPrediction">
             <span class="mainEmoji">
               <img src="" alt="" id="weather-icon" />
             </span>
             <span id="celsius"></span
             ><span class="temperature" id="units">
-              <a href="" id="celsius-temp">°C</a>|<a href="" id="fahrenheit"
+              <a href="" id="celsius-temp" class="deactive">°C</a>|<a
+                href=""
+                id="fahrenheit"
                 >°F</a
               ></span
             >
           </div>
         </div>
-        <div class="col percents">
+        <div class="col-3 percents">
           <ul>
             <li>Humidity: <span id="humidity"></span>%</li>
             <li>
@@ -90,7 +92,7 @@
           </ul>
         </div>
 
-        <div class="col location-time">
+        <div class="col-4 location-time">
           <section class="detailedDescription">
             <ul class="detail">
               <li><span id="city"></span> <span id="country"></span></li>

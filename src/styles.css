@@ -31,7 +31,7 @@ li {
   top: -10px;
 }
 .mainPrediction {
-  font-size: 48px;
+  font-size: 54px;
   padding-right: 0;
   padding-top: 15px;
   margin-bottom: 0;
@@ -166,4 +166,7 @@ li {
 }
 .location-time {
   padding-top: 20px;
+}
+a.deactive {
+  cursor: default;
 }
