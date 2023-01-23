@@ -1,4 +1,5 @@
-function currentDate(today) {
+function currentDate(timestamp) {
+  let date = new Date(timestamp * 1000);
   let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
   let months = [
     "Jan",
@@ -14,20 +15,20 @@ function currentDate(today) {
     "Oct",
     "Dec",
   ];
-  let day = days[today.getDay()];
-  let month = months[today.getMonth()];
-  let date = today.getDate();
-  let year = today.getUTCFullYear();
-  let hour = today.getHours();
+  let day = days[date.getDay()];
+  let month = months[date.getMonth()];
+  let todayDate = date.getDate();
+  let year = date.getUTCFullYear();
+  let hour = date.getHours();
   if (hour < 10) {
     hour = `0${hour}`;
   }
-  let minute = today.getMinutes();
+  let minute = date.getMinutes();
   if (minute < 10) {
     minute = `0${minute}`;
   }
-  let fullDate = `${day}, ${month} ${date}, ${hour}:${minute}`;
-  let current = document.querySelector("#date");
+  let fullDate = `${day}, ${month} ${todayDate}, ${hour}:${minute}`;
+  let current = document.querySelector("#date-id");
   current.innerHTML = fullDate;
 }
 
@@ -44,6 +45,7 @@ function getWeather(response) {
   let windDegree = Math.round(response.data.wind.degree);
   let icon = response.data.condition.icon;
   let iconUrl = response.data.condition.icon_url;
+  let timeControl = response.data.time;
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let countryElement = document.querySelector("#country");
@@ -65,6 +67,7 @@ function getWeather(response) {
   let iconElement = document.querySelector("#weather-icon");
   iconElement.setAttribute("src", iconUrl);
   iconElement.setAttribute("alt", icon);
+  currentDate(timeControl);
 }
 
 function calculateWindDegree(windDegree) {
@@ -127,9 +130,9 @@ function checkLocation() {
     let latitudeElement = position.coords.latitude;
     let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
     let unit = "metric";
-    let apiUrl = `api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}
 `;
-    https: axios.get(apiUrl).then(getWeather);
+    axios.get(apiUrl).then(getWeather);
   }
 }
 
@@ -160,7 +163,7 @@ function turnToCelsius(event) {
   fahrenheitTemperature.classList.remove("deactive");
 }
 
-currentDate(new Date());
+//currentDate(new Date());
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
