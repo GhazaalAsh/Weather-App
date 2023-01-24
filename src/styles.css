@@ -16,6 +16,9 @@ li {
   position: relative;
   top: -10px;
 }
+a {
+  text-decoration: none;
+}
 .mainPrediction {
   font-size: 54px;
   padding-right: 0;
