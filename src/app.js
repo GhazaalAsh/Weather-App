@@ -69,6 +69,7 @@ function getWeather(response) {
   temperatureControl = response.data.temperature.current;
   let temperature = Math.round(temperatureControl);
   let realFeel = Math.round(response.data.temperature.feels_like);
+  feelsLikeControl = response.data.temperature.feels_like;
   let humidity = response.data.temperature.humidity;
   let pressure = response.data.temperature.pressure;
   let windSpeed = Math.round(response.data.wind.speed);
@@ -235,6 +236,11 @@ function turnToFahrenheit(event) {
   fahrenheitTemperature.classList.add("deactive");
   let fahrenheit = Math.round((temperatureControl * 9) / 5 + 32);
   TemperatureNumber.innerHTML = fahrenheit;
+  let feelsLike = document.querySelector("#feels");
+  let fahrenheitFeelsLike = Math.round((feelsLikeControl * 9) / 5 + 32);
+  feelsLike.innerHTML = fahrenheitFeelsLike;
+  let feelsLikeDegree = document.querySelector("#feels-like-degree");
+  feelsLikeDegree.innerHTML = "°F";
 }
 
 function turnToCelsius(event) {
@@ -244,6 +250,11 @@ function turnToCelsius(event) {
   let TemperatureNumber = document.querySelector("#celsius");
   let celsiusElement = Math.round(temperatureControl);
   TemperatureNumber.innerHTML = celsiusElement;
+  let feelsLike = document.querySelector("#feels");
+  let fahrenheitFeelsLike = Math.round(feelsLikeControl);
+  feelsLike.innerHTML = fahrenheitFeelsLike;
+  let feelsLikeDegree = document.querySelector("#feels-like-degree");
+  feelsLikeDegree.innerHTML = "°C";
 }
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
@@ -253,6 +264,7 @@ let celsiustemp = document.querySelector("#celsius-temp");
 celsiustemp.addEventListener("click", turnToCelsius);
 
 let temperatureControl = null;
+let feelsLikeControl = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
