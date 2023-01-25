@@ -104,6 +104,7 @@ hr {
 }
 .hourly-forecast {
   text-align: center;
+  font-size: 13px;
 }
 .fahrenheit {
   font-size: 15px;
@@ -194,4 +195,23 @@ hr {
 }
 a.deactive {
   cursor: default;
+}
+.daily-forecast {
+  text-align: center;
+  font-size: 13px;
+}
+.daily-forecast-day {
+  font-weight: 700;
+}
+.daily-forecast-min {
+  font-weight: 500;
+}
+.daily-forecast-max {
+  font-weight: 700;
+}
+.hourly-forecast-degree {
+  font-weight: 500;
+}
+.hourly-forecast-time {
+  font-weight: 600;
 }

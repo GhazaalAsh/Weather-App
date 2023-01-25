@@ -133,24 +133,47 @@ function showHourlyForecast() {
     "22:00",
     "00:00",
     "02:00",
-    "04:00",
   ];
   let hourlyForecastHTML = `<div class="row">`;
   upcomingHours.forEach(function hourlyForecast(upcomingHours) {
     hourlyForecastHTML =
       hourlyForecastHTML +
       `  <div class="col">
-    <div class="hourly-forecast">-3°C</div>
+    <div class="hourly-forecast-degree">-3°C</div>
     <img
       src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
       alt="Mist Day"
       width="42"
     />
-    <div class="hourly-forecast">${upcomingHours}</div>
+    <div class="hourly-forecast-time">${upcomingHours}</div>
   </div>`;
   });
   hourlyForecastHTML = hourlyForecastHTML + `</div>`;
   showHourlyForecastElement.innerHTML = hourlyForecastHTML;
+}
+
+function showDailyForecast() {
+  let showDailyForecastElement = document.querySelector("#daily-forecast");
+  let upcomingDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let dailyForecastHTML = `<div class="row">`;
+  upcomingDays.forEach(function dailyForecast(upcomingDays) {
+    dailyForecastHTML =
+      dailyForecastHTML +
+      `<div class="col">
+            <div class="daily-forecast-day">Tue</div>
+            <img
+              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
+              alt="Mist Day"
+              width="42"
+            />
+            <div class="daily-forecasst-minandmax">
+              <span class="daily-forecast-min">-1°</span>
+              <span class="daily-forecast-max">5°</span>
+            </div>
+          </div>`;
+  });
+  dailyForecastHTML = dailyForecastHTML + `</div>`;
+  showDailyForecastElement.innerHTML = dailyForecastHTML;
 }
 
 function searchDefaultCity(city) {
@@ -251,5 +274,5 @@ let newYorkLink = document.querySelector("#new-York");
 newYorkLink.addEventListener("click", searchNewYork);
 
 searchDefaultCity("Tehran");
-
 showHourlyForecast();
+showDailyForecast();
