@@ -114,11 +114,21 @@
         </div>
         <div class="col detail">Pressure <span id="pressure"> </span> mb</div>
       </div>
-      <hr />
+
       <div class="moreInfo">
-        <div class="btn-group" role="group" aria-label="Basic outlined example">
-          <button type="button" class="btn" id="btnTemp">Temperature</button>
-          <button type="button" class="btn" id="btnWind">Wind</button>
+        <div
+          class="btn-group"
+          role="group"
+          aria-label="radio toggle button group"
+        >
+          <input type="radio" class="btn-check btn-outline-secondary" checked />
+          <label class="btn btn-outline-secondary" for="vbtn-radio1"
+            >Temperature</label
+          >
+          <input type="radio" class="btn-check btn-outline-secondary" />
+          <label class="btn btn-outline-secondary" for="vbtn-radio2"
+            >Wind</label
+          >
         </div>
       </div>
 

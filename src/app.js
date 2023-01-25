@@ -6,8 +6,6 @@ function setbackground(hour) {
   celsiusLinkColorElement = document.querySelector("#celsius-temp");
   fahrenheitLinkColorElement = document.querySelector("#fahrenheit");
   unitsLinkColorElement = document.querySelector("#colorChange");
-  temperatureButtonElement = document.querySelector("#btnTemp");
-  windButtonElement = document.querySelector("#btnWind");
   if (hour < 12 && hour >= 6) {
     backgroundElment.classList.add("morning");
   } else if (hour < 18 && hour >= 12) {
@@ -28,8 +26,6 @@ function setbackground(hour) {
     fahrenheitLinkColorElement.classList.add("templinkNight");
     unitsLinkColorElement.classList.remove("colorChange");
     unitsLinkColorElement.classList.add("colorChangeNight");
-    temperatureButtonElement.classList.add("colorChangeNight");
-    windButtonElement.classList.add("colorChangeNight");
   }
 }
 function currentDate(timestamp) {
