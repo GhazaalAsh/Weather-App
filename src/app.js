@@ -123,6 +123,36 @@ function calculateWindDegree(windDegree) {
     return "NW";
   }
 }
+function showHourlyForecast() {
+  let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
+  let upcomingHours = [
+    "14:00",
+    "16:00",
+    "18:00",
+    "20:00",
+    "22:00",
+    "00:00",
+    "02:00",
+    "04:00",
+  ];
+  let hourlyForecastHTML = `<div class="row">`;
+  upcomingHours.forEach(function hourlyForecast(upcomingHours) {
+    hourlyForecastHTML =
+      hourlyForecastHTML +
+      `  <div class="col">
+    <div class="hourly-forecast">-3°C</div>
+    <img
+      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
+      alt="Mist Day"
+      width="42"
+    />
+    <div class="hourly-forecast">${upcomingHours}</div>
+  </div>`;
+  });
+  hourlyForecastHTML = hourlyForecastHTML + `</div>`;
+  showHourlyForecastElement.innerHTML = hourlyForecastHTML;
+}
+
 function searchDefaultCity(city) {
   let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
   let unit = "metric";
@@ -221,3 +251,5 @@ let newYorkLink = document.querySelector("#new-York");
 newYorkLink.addEventListener("click", searchNewYork);
 
 searchDefaultCity("Tehran");
+
+showHourlyForecast();
