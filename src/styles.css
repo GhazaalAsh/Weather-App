@@ -215,3 +215,7 @@ a.deactive {
 .hourly-forecast-time {
   font-weight: 600;
 }
+.line {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
