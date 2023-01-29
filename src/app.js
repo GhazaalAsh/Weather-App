@@ -77,6 +77,9 @@ function getWeather(response) {
   let icon = response.data.condition.icon;
   let iconUrl = response.data.condition.icon_url;
   let timeControl = response.data.time;
+  let longitude = response.data.coordinates.longitude;
+  let latitude= response.data.coordinates.latitude;
+
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let countryElement = document.querySelector("#country");
@@ -173,6 +176,13 @@ function showDailyForecast() {
   showDailyForecastElement.innerHTML = dailyForecastHTML;
 }
 
+//function getForecast(response) {
+  //let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  //let unit = "metric";
+  //let apiUrl= `https://api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}`;
+  //console.log(apiUrl);
+//}
+
 function searchDefaultCity(city) {
   let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
   let unit = "metric";
@@ -210,11 +220,11 @@ function searchNewYork(event) {
 function checkLocation() {
   navigator.geolocation.getCurrentPosition(getPosition);
   function getPosition(position) {
-    let longitudeElement = position.coords.longitude;
-    let latitudeElement = position.coords.latitude;
+    let currentLongitude = position.coords.longitude;
+    let currentLaitude = position.coords.latitude;
     let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
     let unit = "metric";
-    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${currentLongitude}&lat=${currentLaitude}&key=${apiKey}&units=${unit}
 `;
     axios.get(apiUrl).then(getWeather);
   }
@@ -284,3 +294,4 @@ newYorkLink.addEventListener("click", searchNewYork);
 searchDefaultCity("Tehran");
 showHourlyForecast();
 showDailyForecast();
+//getForecast("Paris");
