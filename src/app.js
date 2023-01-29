@@ -62,6 +62,13 @@ function currentDate(timestamp) {
   setbackground(hour);
 }
 
+function getUpcomingDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let day = days[date.getDay()];
+  return day;
+}
+
 function getWeather(response) {
   let city = response.data.city;
   let country = response.data.country;
@@ -79,7 +86,7 @@ function getWeather(response) {
   let timeControl = response.data.time;
   let longitude = response.data.coordinates.longitude;
   let latitude= response.data.coordinates.latitude;
-
+  getLocation(longitude, latitude);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let countryElement = document.querySelector("#country");
@@ -152,23 +159,23 @@ function showHourlyForecast() {
   showHourlyForecastElement.innerHTML = hourlyForecastHTML;
 }
 
-function showDailyForecast() {
+function showDailyForecast(response) {
   let showDailyForecastElement = document.querySelector("#daily-forecast");
-  let upcomingDays = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let upcomingDays = response.data.daily;
   let dailyForecastHTML = `<div class="row">`;
   upcomingDays.forEach(function dailyForecast(upcomingDays) {
     dailyForecastHTML =
       dailyForecastHTML +
       `<div class="col">
-            <div class="daily-forecast-day">Tue</div>
+            <div class="daily-forecast-day">${getUpcomingDay(upcomingDays.time)}</div>
             <img
-              src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
-              alt="Mist Day"
+              src=${upcomingDays.condition.icon_url}
+              alt=${upcomingDays.condition.description}
               width="42"
             />
             <div class="daily-forecasst-minandmax">
-              <span class="daily-forecast-min">-1°</span>
-              <span class="daily-forecast-max">5°</span>
+              <span class="daily-forecast-min">${Math.round(upcomingDays.temperature.minimum)}°</span>
+              <span class="daily-forecast-max">${Math.round(upcomingDays.temperature.maximum)}°</span>
             </div>
           </div>`;
   });
@@ -176,12 +183,13 @@ function showDailyForecast() {
   showDailyForecastElement.innerHTML = dailyForecastHTML;
 }
 
-//function getForecast(response) {
-  //let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
-  //let unit = "metric";
-  //let apiUrl= `https://api.shecodes.io/weather/v1/current?lon=${longitudeElement}&lat=${latitudeElement}&key=${apiKey}&units=${unit}`;
-  //console.log(apiUrl);
-//}
+
+function getLocation(longitude, latitude) {
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl= `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showDailyForecast);
+}
 
 function searchDefaultCity(city) {
   let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
@@ -293,5 +301,3 @@ newYorkLink.addEventListener("click", searchNewYork);
 
 searchDefaultCity("Tehran");
 showHourlyForecast();
-showDailyForecast();
-//getForecast("Paris");
