@@ -79,6 +79,64 @@ function getUpcomingHours(timestamp) {
   return upcomingHour;
 }
 
+function defineDescription(description) {
+  if (description === "0") {
+    return "Clear Sky";
+  } else if (description === "1") {
+    return "Mainly Clear";
+  } else if (description === "2") {
+    return "Partly Cloudy";
+  } else if (description === "3") {
+    return "Overcast";
+  } else if (description === "45") {
+    return "Fog";
+  } else if (description === "48") {
+    return "Rime Fog";
+  } else if (description === "51") {
+    return "Light Drizzle";
+  } else if (description === "53") {
+    return "Moderate Drizzle";
+  } else if (description === "55") {
+    return "Dense Drizzle";
+  } else if (description === "56") {
+    return "Light Freezing Drizzle";
+  } else if (description === "57") {
+    return "Dense Freezing Drizzle";
+  } else if (description === "61") {
+    return "Slight Rain";
+  } else if (description === "63") {
+    return "Moderate Rain";
+  } else if (description === "65") {
+    return "Heavy Rain";
+  } else if (description === "66") {
+    return "Light Freezing Rain";
+  } else if (description === "67") {
+    return "Heavy Freezing Rain";
+  } else if (description === "71") {
+    return "Slight Snow Fall";
+  } else if (description === "73") {
+    return "Moderate Snow Fall";
+  } else if (description === "75") {
+    return "Heavy Snow Fall";
+  } else if (description === "77") {
+    return "Snow Grains";
+  } else if (description === "80") {
+    return "Slight Rain Shower";
+  } else if (description === "81") {
+    return "Moderate Rain shower";
+  } else if (description === "82") {
+    return "Violent Rain Shower";
+  } else if (description === "85") {
+    return "Light Snow Shower";
+  } else if (description === "86") {
+    return "Heavy Snow Shower";
+  } else if (description === "95") {
+    return "Thunderstorm";
+  } else {
+    return "Thunderstorm Hail";
+  }
+}
+
 function getWeather(response) {
   let city = response.data.city;
   let country = response.data.country;
@@ -145,19 +203,17 @@ function showHourlyForecast(response) {
   let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
   let upcomingHours = response.data.hourly.time;
   let upcomingTemperature = response.data.hourly.temperature_120m;
+  let weatherCode = response.data.hourly.weathercode;
+  console.log(weatherCode);
   let hourlyForecastHTML = `<div class="row">`;
-  console.log(timeControl);
   let result = null;
   for (let i = 0; i < upcomingHours.length; i++) {
     if (upcomingHours[i] > timeControl) {
       result = i;
-      console.log(result);
       break;
     }
   }
   newResult = result + 6;
-  console.log(newResult);
-  console.log(upcomingTemperature[newResult], upcomingTemperature[result]);
 
   upcomingHours.forEach(function hourlyForecast(upcomingHours, index) {
     if (upcomingHours > timeControl && index < newResult) {
@@ -169,7 +225,7 @@ function showHourlyForecast(response) {
     )}°C</div>
     <img
       src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
-      alt="Mist Day"
+      alt=${defineDescription(weatherCode[index])}
       width="42"
     />
     <div class="hourly-forecast-time"> ${getUpcomingHours(upcomingHours)} </div>
@@ -223,6 +279,7 @@ function showDailyForecast(response) {
 
 function catchhourlyData() {
   let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudeControl}&longitude=${longitudeControl}&hourly=weathercode,windspeed_120m,winddirection_120m,temperature_120m&timeformat=unixtime`;
+  console.log(url);
   axios.get(url).then(showHourlyForecast);
 }
 
