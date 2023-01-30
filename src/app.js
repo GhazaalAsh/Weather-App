@@ -144,6 +144,7 @@ function calculateWindDegree(windDegree) {
 function showHourlyForecast(response) {
   let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
   let upcomingHours = response.data.hourly.time;
+  let upcomingTemperature = response.data.hourly.temperature_120m;
   let hourlyForecastHTML = `<div class="row">`;
   console.log(timeControl);
   let result = null;
@@ -156,13 +157,16 @@ function showHourlyForecast(response) {
   }
   newResult = result + 6;
   console.log(newResult);
+  console.log(upcomingTemperature[newResult], upcomingTemperature[result]);
 
   upcomingHours.forEach(function hourlyForecast(upcomingHours, index) {
     if (upcomingHours > timeControl && index < newResult) {
       hourlyForecastHTML =
         hourlyForecastHTML +
         `  <div class="col">
-    <div class="hourly-forecast-degree">-3°C</div>
+    <div class="hourly-forecast-degree">${Math.round(
+      upcomingTemperature[index]
+    )}°C</div>
     <img
       src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
       alt="Mist Day"
@@ -173,9 +177,7 @@ function showHourlyForecast(response) {
     }
   });
 
-  //console.log(response.data);
-  //console.log(response.data.hourly.time);
-  //console.log(response.data.hourly.temperature_120m);
+  console.log(response.data.hourly.temperature_120m);
 
   hourlyForecastHTML = hourlyForecastHTML + `</div>`;
   showHourlyForecastElement.innerHTML = hourlyForecastHTML;
