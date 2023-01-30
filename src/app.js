@@ -84,9 +84,9 @@ function getWeather(response) {
   let icon = response.data.condition.icon;
   let iconUrl = response.data.condition.icon_url;
   let timeControl = response.data.time;
-  let longitude = response.data.coordinates.longitude;
-  let latitude = response.data.coordinates.latitude;
-  getLocation(longitude, latitude);
+  longitudeControl = response.data.coordinates.longitude;
+  latitudeControl = response.data.coordinates.latitude;
+  getLocation(longitudeControl, latitudeControl);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
   let countryElement = document.querySelector("#country");
@@ -176,7 +176,7 @@ function showDailyForecast(response) {
               alt=${upcomingDays.condition.description}
               width="48"
             />
-            <div class="daily-forecasst-minandmax">
+            <div class="daily-forecasst-minandmax" id="daily-forecasst-minandmax">
               <span class="daily-forecast-min">${Math.round(
                 upcomingDays.temperature.minimum
               )}°</span>
@@ -195,6 +195,20 @@ function showDailyForecast(response) {
   currentMaximumElement = document.querySelector("#current-max-temp");
   currentMaximumControl = response.data.daily[0].temperature.maximum;
   currentMaximumElement.innerHTML = Math.round(currentMaximumControl);
+}
+
+function minimunMaximumFahrenheitTurn() {
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "imperial";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitudeControl}&lon=${longitudeControl}&key=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showDailyForecast);
+}
+
+function minimunMaximumCelsisTurn() {
+  let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
+  let unit = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitudeControl}&lon=${longitudeControl}&key=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(showDailyForecast);
 }
 
 function getLocation(longitude, latitude) {
@@ -272,20 +286,11 @@ function turnToFahrenheit(event) {
   feelsLike.innerHTML = fahrenheitFeelsLike;
   let feelsLikeDegree = document.querySelector("#feels-like-degree");
   feelsLikeDegree.innerHTML = "°F";
-  let currentMinimumElement = document.querySelector("#current-min-temp");
-  let currentMinimumFahrenheit = Math.round(
-    (currentMinimumControl * 9) / 5 + 32
-  );
-  currentMinimumElement.innerHTML = currentMinimumFahrenheit;
   let currentMinimumUnitElement = document.querySelector("#current-min");
   currentMinimumUnitElement.innerHTML = "°F";
-  let currentMaximumElement = document.querySelector("#current-max-temp");
-  let currentMaxiumFahrenheit = Math.round(
-    (currentMaximumControl * 9) / 5 + 32
-  );
-  currentMaximumElement.innerHTML = currentMaxiumFahrenheit;
   let currentMaximumUnitElement = document.querySelector("#current-max");
   currentMaximumUnitElement.innerHTML = "°F";
+  minimunMaximumFahrenheitTurn();
 }
 
 function turnToCelsius(event) {
@@ -300,16 +305,11 @@ function turnToCelsius(event) {
   feelsLike.innerHTML = fahrenheitFeelsLike;
   let feelsLikeDegree = document.querySelector("#feels-like-degree");
   feelsLikeDegree.innerHTML = "°C";
-  let currentMinimumElement = document.querySelector("#current-min-temp");
-  let currentMinimumCelsius = Math.round(currentMinimumControl);
-  currentMinimumElement.innerHTML = currentMinimumCelsius;
   let currentMinimumUnitElement = document.querySelector("#current-min");
   currentMinimumUnitElement.innerHTML = "°C";
-  let currentMaximumElement = document.querySelector("#current-max-temp");
-  let currentMaxiumCelsius = Math.round(currentMaximumControl);
-  currentMaximumElement.innerHTML = currentMaxiumCelsius;
   let currentMaximumUnitElement = document.querySelector("#current-max");
   currentMaximumUnitElement.innerHTML = "°C";
+  minimunMaximumCelsisTurn();
 }
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
@@ -322,6 +322,8 @@ let temperatureControl = null;
 let feelsLikeControl = null;
 let currentMinimumControl = null;
 let currentMaximumControl = null;
+let longitudeControl = null;
+let latitudeControl = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
