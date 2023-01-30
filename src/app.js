@@ -69,6 +69,16 @@ function getUpcomingDay(timestamp) {
   return day;
 }
 
+function getUpcomingHours(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let hour = date.getHours();
+  if (hour < 10) {
+    hour = `0${hour}`;
+  }
+  let upcomingHour = `${hour}:00`;
+  return upcomingHour;
+}
+
 function getWeather(response) {
   let city = response.data.city;
   let country = response.data.country;
@@ -83,7 +93,7 @@ function getWeather(response) {
   let windDegree = Math.round(response.data.wind.degree);
   let icon = response.data.condition.icon;
   let iconUrl = response.data.condition.icon_url;
-  let timeControl = response.data.time;
+  timeControl = response.data.time;
   longitudeControl = response.data.coordinates.longitude;
   latitudeControl = response.data.coordinates.latitude;
   getLocation(longitudeControl, latitudeControl);
@@ -130,31 +140,43 @@ function calculateWindDegree(windDegree) {
     return "NW";
   }
 }
-function showHourlyForecast() {
+
+function showHourlyForecast(response) {
   let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
-  let upcomingHours = [
-    "14:00",
-    "16:00",
-    "18:00",
-    "20:00",
-    "22:00",
-    "00:00",
-    "02:00",
-  ];
+  let upcomingHours = response.data.hourly.time;
   let hourlyForecastHTML = `<div class="row">`;
-  upcomingHours.forEach(function hourlyForecast(upcomingHours) {
-    hourlyForecastHTML =
-      hourlyForecastHTML +
-      `  <div class="col">
+  console.log(timeControl);
+  let result = null;
+  for (let i = 0; i < upcomingHours.length; i++) {
+    if (upcomingHours[i] > timeControl) {
+      result = i;
+      console.log(result);
+      break;
+    }
+  }
+  newResult = result + 6;
+  console.log(newResult);
+
+  upcomingHours.forEach(function hourlyForecast(upcomingHours, index) {
+    if (upcomingHours > timeControl && index < newResult) {
+      hourlyForecastHTML =
+        hourlyForecastHTML +
+        `  <div class="col">
     <div class="hourly-forecast-degree">-3°C</div>
     <img
       src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png"
       alt="Mist Day"
       width="42"
     />
-    <div class="hourly-forecast-time">${upcomingHours}</div>
+    <div class="hourly-forecast-time"> ${getUpcomingHours(upcomingHours)} </div>
   </div>`;
+    }
   });
+
+  //console.log(response.data);
+  //console.log(response.data.hourly.time);
+  //console.log(response.data.hourly.temperature_120m);
+
   hourlyForecastHTML = hourlyForecastHTML + `</div>`;
   showHourlyForecastElement.innerHTML = hourlyForecastHTML;
 }
@@ -197,6 +219,11 @@ function showDailyForecast(response) {
   currentMaximumElement.innerHTML = Math.round(currentMaximumControl);
 }
 
+function catchhourlyData() {
+  let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudeControl}&longitude=${longitudeControl}&hourly=weathercode,windspeed_120m,winddirection_120m,temperature_120m&timeformat=unixtime`;
+  axios.get(url).then(showHourlyForecast);
+}
+
 function minimunMaximumFahrenheitTurn() {
   let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
   let unit = "imperial";
@@ -216,6 +243,7 @@ function getLocation(longitude, latitude) {
   let unit = "metric";
   let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showDailyForecast);
+  catchhourlyData();
 }
 
 function searchDefaultCity(city) {
@@ -324,6 +352,7 @@ let currentMinimumControl = null;
 let currentMaximumControl = null;
 let longitudeControl = null;
 let latitudeControl = null;
+let timeControl = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
@@ -341,4 +370,3 @@ let newYorkLink = document.querySelector("#new-York");
 newYorkLink.addEventListener("click", searchNewYork);
 
 searchDefaultCity("Tehran");
-showHourlyForecast();
