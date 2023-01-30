@@ -43,7 +43,7 @@
       <form>
         <div class="input-group">
           <input
-            type="text"
+            type="search"
             class="form-control"
             placeholder="Search for a city..."
             id="search-input"
@@ -81,10 +81,8 @@
           <ul>
             <li>Humidity: <span id="humidity"></span>%</li>
             <li>
-              Wind: <span id="wind"></span> Km/h<span
-                class="windDegree"
-                id="wind-degree"
-              ></span>
+              Wind: <span id="wind"></span> Km/h
+              <span class="windDegree" id="wind-degree"></span>
             </li>
             <li><span id="description" class="description"></span></li>
           </ul>
@@ -103,8 +101,14 @@
       <div class="row middleDescription">
         <div class="col detail minimumMaximum">
           <ul>
-            <li>L:<span id="min-temp"></span>°C</li>
-            <li>H:<span id="max-temp"></span>°C</li>
+            <li>
+              L: <span id="current-min-temp"></span>
+              <span id="current-min">°C</span>
+            </li>
+            <li>
+              H: <span id="current-max-temp"></span>
+              <span id="current-max">°C</span>
+            </li>
           </ul>
         </div>
         <div class="col">

@@ -85,7 +85,7 @@ function getWeather(response) {
   let iconUrl = response.data.condition.icon_url;
   let timeControl = response.data.time;
   let longitude = response.data.coordinates.longitude;
-  let latitude= response.data.coordinates.latitude;
+  let latitude = response.data.coordinates.latitude;
   getLocation(longitude, latitude);
   let cityElement = document.querySelector("#city");
   cityElement.innerHTML = `${city},`;
@@ -163,31 +163,44 @@ function showDailyForecast(response) {
   let showDailyForecastElement = document.querySelector("#daily-forecast");
   let upcomingDays = response.data.daily;
   let dailyForecastHTML = `<div class="row">`;
-  upcomingDays.forEach(function dailyForecast(upcomingDays) {
-    dailyForecastHTML =
-      dailyForecastHTML +
-      `<div class="col">
-            <div class="daily-forecast-day">${getUpcomingDay(upcomingDays.time)}</div>
+  upcomingDays.forEach(function dailyForecast(upcomingDays, index) {
+    if (index > 0) {
+      dailyForecastHTML =
+        dailyForecastHTML +
+        `<div class="col">
+            <div class="daily-forecast-day">${getUpcomingDay(
+              upcomingDays.time
+            )}</div>
             <img
               src=${upcomingDays.condition.icon_url}
               alt=${upcomingDays.condition.description}
-              width="42"
+              width="48"
             />
             <div class="daily-forecasst-minandmax">
-              <span class="daily-forecast-min">${Math.round(upcomingDays.temperature.minimum)}°</span>
-              <span class="daily-forecast-max">${Math.round(upcomingDays.temperature.maximum)}°</span>
+              <span class="daily-forecast-min">${Math.round(
+                upcomingDays.temperature.minimum
+              )}°</span>
+              <span class="daily-forecast-max">${Math.round(
+                upcomingDays.temperature.maximum
+              )}°</span>
             </div>
           </div>`;
+    }
   });
   dailyForecastHTML = dailyForecastHTML + `</div>`;
   showDailyForecastElement.innerHTML = dailyForecastHTML;
+  currentMinimumElement = document.querySelector("#current-min-temp");
+  currentMinimumControl = response.data.daily[0].temperature.minimum;
+  currentMinimumElement.innerHTML = Math.round(currentMinimumControl);
+  currentMaximumElement = document.querySelector("#current-max-temp");
+  currentMaximumControl = response.data.daily[0].temperature.maximum;
+  currentMaximumElement.innerHTML = Math.round(currentMaximumControl);
 }
-
 
 function getLocation(longitude, latitude) {
   let apiKey = "32f40ea24c4bbf27t7cf439de1do4214";
   let unit = "metric";
-  let apiUrl= `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lat=${latitude}&lon=${longitude}&key=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(showDailyForecast);
 }
 
@@ -259,6 +272,20 @@ function turnToFahrenheit(event) {
   feelsLike.innerHTML = fahrenheitFeelsLike;
   let feelsLikeDegree = document.querySelector("#feels-like-degree");
   feelsLikeDegree.innerHTML = "°F";
+  let currentMinimumElement = document.querySelector("#current-min-temp");
+  let currentMinimumFahrenheit = Math.round(
+    (currentMinimumControl * 9) / 5 + 32
+  );
+  currentMinimumElement.innerHTML = currentMinimumFahrenheit;
+  let currentMinimumUnitElement = document.querySelector("#current-min");
+  currentMinimumUnitElement.innerHTML = "°F";
+  let currentMaximumElement = document.querySelector("#current-max-temp");
+  let currentMaxiumFahrenheit = Math.round(
+    (currentMaximumControl * 9) / 5 + 32
+  );
+  currentMaximumElement.innerHTML = currentMaxiumFahrenheit;
+  let currentMaximumUnitElement = document.querySelector("#current-max");
+  currentMaximumUnitElement.innerHTML = "°F";
 }
 
 function turnToCelsius(event) {
@@ -283,6 +310,8 @@ celsiustemp.addEventListener("click", turnToCelsius);
 
 let temperatureControl = null;
 let feelsLikeControl = null;
+let currentMinimumControl = null;
+let currentMaximumControl = null;
 
 let form = document.querySelector("form");
 form.addEventListener("submit", searchCity);
