@@ -300,6 +300,16 @@ function turnToCelsius(event) {
   feelsLike.innerHTML = fahrenheitFeelsLike;
   let feelsLikeDegree = document.querySelector("#feels-like-degree");
   feelsLikeDegree.innerHTML = "°C";
+  let currentMinimumElement = document.querySelector("#current-min-temp");
+  let currentMinimumCelsius = Math.round(currentMinimumControl);
+  currentMinimumElement.innerHTML = currentMinimumCelsius;
+  let currentMinimumUnitElement = document.querySelector("#current-min");
+  currentMinimumUnitElement.innerHTML = "°C";
+  let currentMaximumElement = document.querySelector("#current-max-temp");
+  let currentMaxiumCelsius = Math.round(currentMaximumControl);
+  currentMaximumElement.innerHTML = currentMaxiumCelsius;
+  let currentMaximumUnitElement = document.querySelector("#current-max");
+  currentMaximumUnitElement.innerHTML = "°C";
 }
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
