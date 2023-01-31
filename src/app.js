@@ -80,57 +80,57 @@ function getUpcomingHours(timestamp) {
 }
 
 function defineDescription(description) {
-  if (description === "0") {
+  if (description === 0) {
     return "Clear Sky";
-  } else if (description === "1") {
+  } else if (description === 1) {
     return "Mainly Clear";
-  } else if (description === "2") {
+  } else if (description === 2) {
     return "Partly Cloudy";
-  } else if (description === "3") {
+  } else if (description === 3) {
     return "Overcast";
-  } else if (description === "45") {
+  } else if (description === 45) {
     return "Fog";
-  } else if (description === "48") {
+  } else if (description === 48) {
     return "Rime Fog";
-  } else if (description === "51") {
+  } else if (description === 51) {
     return "Light Drizzle";
-  } else if (description === "53") {
+  } else if (description === 53) {
     return "Moderate Drizzle";
-  } else if (description === "55") {
+  } else if (description === 55) {
     return "Dense Drizzle";
-  } else if (description === "56") {
+  } else if (description === 56) {
     return "Light Freezing Drizzle";
-  } else if (description === "57") {
+  } else if (description === 57) {
     return "Dense Freezing Drizzle";
-  } else if (description === "61") {
+  } else if (description === 61) {
     return "Slight Rain";
-  } else if (description === "63") {
+  } else if (description === 63) {
     return "Moderate Rain";
-  } else if (description === "65") {
+  } else if (description === 65) {
     return "Heavy Rain";
-  } else if (description === "66") {
+  } else if (description === 66) {
     return "Light Freezing Rain";
-  } else if (description === "67") {
+  } else if (description === 67) {
     return "Heavy Freezing Rain";
-  } else if (description === "71") {
+  } else if (description === 71) {
     return "Slight Snow Fall";
-  } else if (description === "73") {
+  } else if (description === 73) {
     return "Moderate Snow Fall";
-  } else if (description === "75") {
+  } else if (description === 75) {
     return "Heavy Snow Fall";
-  } else if (description === "77") {
+  } else if (description === 77) {
     return "Snow Grains";
-  } else if (description === "80") {
+  } else if (description === 80) {
     return "Slight Rain Shower";
-  } else if (description === "81") {
+  } else if (description === 81) {
     return "Moderate Rain shower";
-  } else if (description === "82") {
+  } else if (description === 82) {
     return "Violent Rain Shower";
-  } else if (description === "85") {
+  } else if (description === 85) {
     return "Light Snow Shower";
-  } else if (description === "86") {
+  } else if (description === 86) {
     return "Heavy Snow Shower";
-  } else if (description === "95") {
+  } else if (description === 95) {
     return "Thunderstorm";
   } else {
     return "Thunderstorm Hail";
@@ -140,142 +140,201 @@ function defineDescription(description) {
 function getHourlyForecstIcon(description, timestamp) {
   let date = new Date(timestamp * 1000);
   let hourControl = date.getHours();
-  if (description === "0" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
-  } else if (description === "0" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`;
-  } else if (description === "1" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
-  } else if (description === "1" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`;
-  } else if (description === "2" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png");
-  } else if (description === "2" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png");
-  } else if (description === "3" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png");
-  } else if (description === "3" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png");
-  } else if (description === "45" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png");
-  } else if (description === "45" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png");
-  } else if (description === "48" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png");
-  } else if (description === "48" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png");
-  } else if (description === "51" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png");
-  } else if (description === "51" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png");
-  } else if (description === "53" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png");
-  } else if (description === "53" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png");
-  } else if (description === "55" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png");
-  } else if (description === "55" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png");
-  } else if (description === "56" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png");
-  } else if (description === "56" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png");
-  } else if (description === "57" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png");
-  } else if (description === "57" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png");
-  } else if (description === "61" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png");
-  } else if (description === "61" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png");
-  } else if (description === "63" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png");
-  } else if (description === "63" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png");
-  } else if (description === "65" && hourControl > 6 && hourControl < 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png");
-  } else if (description === "65" && hourControl < 6 && hourControl > 18) {
-    return;
-    ("https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png");
-  } else if (description === "66" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
-  } else if (description === "66" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
-  } else if (description === "67" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "67" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "71" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "71" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "73" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "73" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "75" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "75" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "77" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "77" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "80" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
-  } else if (description === "80" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
-  } else if (description === "81" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
-  } else if (description === "81" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
-  } else if (description === "82" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
-  } else if (description === "82" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
-  } else if (description === "85" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "85" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "86" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
-  } else if (description === "86" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
-  } else if (description === "95" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
-  } else if (description === "95" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
-  } else if (description === "96" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
-  } else if (description === "96" && hourControl < 6 && hourControl > 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
-  } else if (description === "99" && hourControl > 6 && hourControl < 18) {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
-  } else {
-    return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
+  if (description === 0) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`;
+    }
+  }
+  if (description === 1) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-night.png`;
+    }
+  }
+  if (description === 2) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/few-clouds-night.png`;
+    }
+  }
+  if (description === 3) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/scattered-clouds-night.png`;
+    }
+  }
+  if (description === 45) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png`;
+    }
+  }
+  if (description === 48) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png`;
+    }
+  }
+  if (description === 51) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png`;
+    }
+  }
+  if (description === 53) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png`;
+    }
+  }
+  if (description === 55) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/mist-night.png`;
+    }
+  }
+  if (description === 56) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 57) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 61) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 63) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 65) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/rain-night.png`;
+    }
+  }
+  if (description === 66) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 67) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 71) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 73) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 75) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 77) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 80) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 81) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 82) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/shower-rain-night.png`;
+    }
+  }
+  if (description === 85) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 86) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/snow-night.png`;
+    }
+  }
+  if (description === 95) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
+    }
+  }
+  if (description === 96) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
+    }
+  }
+  if (description === 99) {
+    if (hourControl > 6 && hourControl <= 18) {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-day.png`;
+    } else {
+      return `https://shecodes-assets.s3.amazonaws.com/api/weather/icons/thunderstorm-night.png`;
+    }
   }
 }
 
@@ -465,7 +524,6 @@ function hourlyForecastTemperatureFahrenheitTurn() {
 }
 
 function displayWind() {
-  console.log("45");
   let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
   showHourlyForecastElement.innerHTML = ``;
   let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudeControl}&longitude=${longitudeControl}&hourly=weathercode,windspeed_120m,winddirection_120m,temperature_120m&timeformat=unixtime`;
