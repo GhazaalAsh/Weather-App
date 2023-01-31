@@ -361,17 +361,15 @@ function showHourlyForecast(response) {
       hourlyForecastHTML =
         hourlyForecastHTML +
         `  <div class="col">
-    <div class="hourly-forecast-degree">${Math.round(
-      upcomingTemperature[index]
-    )}° </div>
-
+    <div class="hourly-forecast-time"> ${getUpcomingHours(upcomingHours)} </div>
     <img
       src=${getHourlyForecstIcon(weatherCode[index], upcomingHours)}
       alt=${defineDescription(weatherCode[index])}
       width="56"
     />
-    
-    <div class="hourly-forecast-time"> ${getUpcomingHours(upcomingHours)} </div>
+    <div class="hourly-forecast-degree">${Math.round(
+      upcomingTemperature[index]
+    )}° </div>
   </div>`;
     }
   });
@@ -542,6 +540,7 @@ function turnToCelsius(event) {
   let currentMaximumUnitElement = document.querySelector("#current-max");
   currentMaximumUnitElement.innerHTML = "°C";
   minimunMaximumCelsisTurn();
+  catchhourlyData();
 }
 
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
