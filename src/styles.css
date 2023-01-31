@@ -219,3 +219,6 @@ a.deactive {
   margin-top: 10px;
   margin-bottom: 15px;
 }
+.hourly-forecast-wind {
+  font-weight: 500;
+}

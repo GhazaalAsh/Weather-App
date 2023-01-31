@@ -377,6 +377,45 @@ function showHourlyForecast(response) {
   showHourlyForecastElement.innerHTML = hourlyForecastHTML;
 }
 
+function showHourlyForecastWind(response) {
+  let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
+  let upcomingHours = response.data.hourly.time;
+  let upcomingWind = response.data.hourly.windspeed_120m;
+  let upcomingWindDirection = response.data.hourly.winddirection_120m;
+  let weatherCode = response.data.hourly.weathercode;
+  let hourlyForecastHTML = `<div class="row">`;
+  let result = null;
+  for (let i = 0; i < upcomingHours.length; i++) {
+    if (upcomingHours[i] > timeControl) {
+      result = i;
+      break;
+    }
+  }
+  newResult = result + 6;
+
+  upcomingHours.forEach(function hourlyForecast(upcomingHours, index) {
+    if (upcomingHours > timeControl && index < newResult) {
+      hourlyForecastHTML =
+        hourlyForecastHTML +
+        `  <div class="col">
+    <div class="hourly-forecast-time"> ${getUpcomingHours(upcomingHours)} </div>
+    <img
+      src=${getHourlyForecstIcon(weatherCode[index], upcomingHours)}
+      alt=${defineDescription(weatherCode[index])}
+      width="56"
+    />
+    <div class="hourly-forecast-wind">${Math.round(
+      upcomingWind[index]
+    )} Km/h <span class="windDegree">${calculateWindDegree(
+          upcomingWindDirection
+        )}</span></div>
+  </div>`;
+    }
+  });
+  hourlyForecastHTML = hourlyForecastHTML + `</div>`;
+  showHourlyForecastElement.innerHTML = hourlyForecastHTML;
+}
+
 function showDailyForecast(response) {
   let showDailyForecastElement = document.querySelector("#daily-forecast");
   let upcomingDays = response.data.daily;
@@ -423,6 +462,14 @@ function catchhourlyData() {
 function hourlyForecastTemperatureFahrenheitTurn() {
   let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudeControl}&longitude=${longitudeControl}&hourly=weathercode,windspeed_120m,winddirection_120m,temperature_120m&timeformat=unixtime&temperature_unit=fahrenheit`;
   axios.get(url).then(showHourlyForecast);
+}
+
+function displayWind() {
+  console.log("45");
+  let showHourlyForecastElement = document.querySelector("#hourrly-forecast");
+  showHourlyForecastElement.innerHTML = ``;
+  let url = `https://api.open-meteo.com/v1/forecast?latitude=${latitudeControl}&longitude=${longitudeControl}&hourly=weathercode,windspeed_120m,winddirection_120m,temperature_120m&timeformat=unixtime`;
+  axios.get(url).then(showHourlyForecastWind);
 }
 
 function minimunMaximumFahrenheitTurn() {
@@ -543,10 +590,6 @@ function turnToCelsius(event) {
   catchhourlyData();
 }
 
-//function Ghgh() {
-//console.log("Boz");
-//}
-
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
 fahrenheitTemperature.addEventListener("click", turnToFahrenheit);
 
@@ -576,7 +619,10 @@ londonLink.addEventListener("click", searchLondon);
 let newYorkLink = document.querySelector("#new-York");
 newYorkLink.addEventListener("click", searchNewYork);
 
-//let windButtonElement = document.querySelector("#wind-button");
-//windButtonElement.addEventListener("checked", Ghgh);
+let temperatureButtonElement = document.querySelector("#btnradio1");
+temperatureButtonElement.addEventListener("click", catchhourlyData);
+
+let windButtonElement = document.querySelector("#btnradio2");
+windButtonElement.addEventListener("click", displayWind);
 
 searchDefaultCity("Tehran");
