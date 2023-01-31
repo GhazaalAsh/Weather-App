@@ -543,6 +543,10 @@ function turnToCelsius(event) {
   catchhourlyData();
 }
 
+//function Ghgh() {
+//console.log("Boz");
+//}
+
 let fahrenheitTemperature = document.querySelector("#fahrenheit");
 fahrenheitTemperature.addEventListener("click", turnToFahrenheit);
 
@@ -571,5 +575,8 @@ londonLink.addEventListener("click", searchLondon);
 
 let newYorkLink = document.querySelector("#new-York");
 newYorkLink.addEventListener("click", searchNewYork);
+
+//let windButtonElement = document.querySelector("#wind-button");
+//windButtonElement.addEventListener("checked", Ghgh);
 
 searchDefaultCity("Tehran");
