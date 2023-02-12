@@ -350,6 +350,7 @@ function getWeather(response) {
   let pressure = response.data.temperature.pressure;
   let windSpeed = Math.round(response.data.wind.speed);
   let windDegree = Math.round(response.data.wind.degree);
+  console.log(windDegree);
   let icon = response.data.condition.icon;
   let iconUrl = response.data.condition.icon_url;
   timeControl = response.data.time;
@@ -442,6 +443,7 @@ function showHourlyForecastWind(response) {
   let upcomingWind = response.data.hourly.windspeed_120m;
   let upcomingWindDirection = response.data.hourly.winddirection_120m;
   let weatherCode = response.data.hourly.weathercode;
+  console.log(upcomingWindDirection);
   let hourlyForecastHTML = `<div class="row">`;
   let result = null;
   for (let i = 0; i < upcomingHours.length; i++) {
